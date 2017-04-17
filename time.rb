@@ -50,7 +50,8 @@ def time_h()
 end
 
 def time_ver()
-    time = Time.now
+    utc_time = Time.now
+    time = utc_time + (60*60*9) # 取得される時間はUTC基準なのでJST基準にするために9時間分早めます
     h = time.hour
 
     if h > 5 && h <= 11

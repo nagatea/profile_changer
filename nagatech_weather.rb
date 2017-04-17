@@ -22,4 +22,6 @@ elsif time_ver() == "hiru"
       weather_name_today()
 elsif time_ver() == "yoru"
       weather_name_tomorrow()
+else
+      
 end
