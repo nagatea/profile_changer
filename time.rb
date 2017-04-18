@@ -54,28 +54,19 @@ def time_ver()
     time = utc_time + (60*60*9) # 取得される時間はUTC基準なのでJST基準にするために9時間分早めます
     h = time.hour
 
-    if h > 5 && h <= 11
+    if h > 3 && h <= 11
         timever = "asa"
         return timever
     end
 
-    if h > 11 && h <= 16
+    if h > 11 && h <= 19
         timever = "hiru"
         return timever
     end
 
-    if h > 16 && h <= 20
-        timever = "yuugata"
-        return timever
-    end
-
-    if (h >= 0 && h <= 1) || (h > 20 && h <= 24)
+    if (h >= 0 && h <= 3) || (h > 19 && h <= 24)
         timever = "yoru"
         return timever
     end
 
-    if h > 1 && h <= 5
-        timever = "sinnya"
-        return timever
-    end
 end
