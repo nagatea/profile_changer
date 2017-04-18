@@ -37,9 +37,9 @@ weather_title.gsub!(/曇り/,"☁")
 weather_title.gsub!(/雨/,"☔")
 weather_title.gsub!(/雪/,"⛄")
 weather_title.gsub!(/止む/,"🌂")
-weather_title.gsub!(/後時々/,"/時々")
 weather_title.gsub!(/後/,"/")
 weather_title.gsub!(/時々/,"|")
+weather_title.gsub!(/\/\|/,"/時々")
 
 username = "ながてち (" + weather_title + ")"
 client.update_profile(name: username)
@@ -82,7 +82,7 @@ weather_title.gsub!(/雪/,"⛄")
 weather_title.gsub!(/止む/,"🌂")
 weather_title.gsub!(/後/,"/")
 weather_title.gsub!(/時々/,"|")
-weather_title.gsub!(/\/|/,"/時々")
+weather_title.gsub!(/\/\|/,"/時々")
 
 username = "ながてち (明日:" + weather_title + ")"
 client.update_profile(name: username)
