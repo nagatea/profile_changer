@@ -1,6 +1,6 @@
 require "twitter"
 require "./time.rb"
-require "./weather_test.rb"
+require "./weather.rb"
 
 stream_client = Twitter::Streaming::Client.new do |config|
       config.consumer_key        = ENV['MY_CONSUMER_KEY']
@@ -17,11 +17,11 @@ client = Twitter::REST::Client.new do |config|
 end
 
 if time_ver() == "asa"
-      weather_name_today()
+      weather_change_today()
 elsif time_ver() == "hiru"
-      weather_name_today()
+      weather_change_today()
 elsif time_ver() == "yoru"
-      weather_name_tomorrow()
+      weather_change_tomorrow()
 else
       
 end
