@@ -2,21 +2,21 @@ require "twitter"
 require "./time.rb"
 require "./weather.rb"
 
-stream_client = Twitter::Streaming::Client.new do |config|
-      config.consumer_key        = ENV['MY_CONSUMER_KEY']
-      config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
-      config.access_token        = ENV['MY_ACCESS_TOKEN']
-      config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
-end
-
-client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['MY_CONSUMER_KEY']
-      config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
-      config.access_token        = ENV['MY_ACCESS_TOKEN']
-      config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
-end
-  
 def change_icon(day) #アイコンを変えるよ
+      stream_client = Twitter::Streaming::Client.new do |config|
+            config.consumer_key        = ENV['MY_CONSUMER_KEY']
+            config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
+            config.access_token        = ENV['MY_ACCESS_TOKEN']
+            config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
+      end
+      
+      client = Twitter::REST::Client.new do |config|
+            config.consumer_key        = ENV['MY_CONSUMER_KEY']
+            config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
+            config.access_token        = ENV['MY_ACCESS_TOKEN']
+            config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
+      end
+      
       weather = Weather.new()
       username = weather.get_weather_name(day, "ながてち")
       weather_title = weather.get_weather(day)
