@@ -18,7 +18,11 @@ def change_icon(day) #アイコンを変えるよ
       end
       
       weather = Weather.new()
-      username = weather.get_weather_name(day, "ながてち")
+      name = "ながてち"
+      oldname = client.user.name.to_s
+      match = oldname.match(/@(.+)/)
+      username = weather.get_weather_name(day, name)
+      username = username + match[1] if match != nil
       weather_title = weather.get_weather(day)
       max_temp = weather.get_max_temperature(day)
       if /雨/ === weather_title
