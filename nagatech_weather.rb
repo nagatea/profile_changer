@@ -21,16 +21,20 @@ def change_icon(day) #アイコンを変えるよ
       name = "ながてち"
       oldname = client.user.name.to_s
       match = oldname.match(/@(.+)/)
-      username = weather.get_weather_name(day, name)
-      username = username + "@" + match[1] if match != nil
       weather_title = weather.get_weather(day)
       max_temp = weather.get_max_temperature(day)
       if /雨/ === weather_title
             icon_name = "rain.png"
+            username = weather.get_weather_name(day, name)
+            username = username + "@" + match[1] if match != nil
       elsif max_temp != "not" && max_temp >= 33 
             icon_name = "hot.png"
+            username = name
+            username = username + "@" + match[1] if match != nil
       else
             icon_name = "nagatech.png"
+            username = name
+            username = username + "@" + match[1] if match != nil
       end
       icon = File.open(File.expand_path("../icon/" + icon_name, __FILE__), "r")
       client.update_profile(name: username)    
