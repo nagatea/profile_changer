@@ -2,23 +2,23 @@ require "twitter"
 require "./time.rb"
 require "./weather.rb"
 
-def change_icon(day) #アイコンを変えるよ
+def change_icon(day)
       stream_client = Twitter::Streaming::Client.new do |config|
-            config.consumer_key        = ENV['MY_CONSUMER_KEY']
-            config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
-            config.access_token        = ENV['MY_ACCESS_TOKEN']
-            config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
+            config.consumer_key        = ENV["MY_CONSUMER_KEY"]
+            config.consumer_secret     = ENV["MY_CONSUMER_SECRET"]
+            config.access_token        = ENV["MY_ACCESS_TOKEN"]
+            config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
       end
       
       client = Twitter::REST::Client.new do |config|
-            config.consumer_key        = ENV['MY_CONSUMER_KEY']
-            config.consumer_secret     = ENV['MY_CONSUMER_SECRET']
-            config.access_token        = ENV['MY_ACCESS_TOKEN']
-            config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
+            config.consumer_key        = ENV["MY_CONSUMER_KEY"]
+            config.consumer_secret     = ENV["MY_CONSUMER_SECRET"]
+            config.access_token        = ENV["MY_ACCESS_TOKEN"]
+            config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
       end
       
       weather = Weather.new()
-      name = "ながてち"
+      name = ENV["USER_SCREEN_NAME"].encode("utf-8")
       oldname = client.user.name.to_s
       match = oldname.match(/@(.+)/)
       weather_title = weather.get_weather(day)
@@ -32,7 +32,7 @@ def change_icon(day) #アイコンを変えるよ
             username = name
             username = username + "@" + match[1] if match != nil
       else
-            icon_name = "nagatech.png"
+            icon_name = "normal.png"
             username = name
             username = username + "@" + match[1] if match != nil
       end
