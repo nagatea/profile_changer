@@ -41,7 +41,7 @@ def change_icon(day) #アイコンを変えるよ
       client.update_profile_image(icon)
 end
 
-if JSTTime.getTimeVer() == "yoru"
+if JSTTime.timever == "yoru"
       change_icon("tomorrow")
 else
       change_icon("today")
